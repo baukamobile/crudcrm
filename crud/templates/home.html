@@ -12,12 +12,13 @@
     </tr>
     <tr>
     {% for task in tasks %}
-    
-    <td>{{task.title}}</td>
+
+    <td><a href="{% url 'task' task.id %}">{{ task.title }}</a></td>
     <td>{{task.content}}</td>
     <td>{{task.start_time}}</td>
     <td>{{task.finish_time}}</td>
     <td>{{task.is_complete}}</td>
+
 </tr>
 {% endfor %}
 </table>
