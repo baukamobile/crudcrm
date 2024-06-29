@@ -7,3 +7,8 @@ class CreateTaskForm(forms.ModelForm):
         model = Task
         fields = '__all__'
 
+
+class UpdateTaskForm(forms.ModelForm):
+    class Meta:
+        model = Task
+        fields = '__all__'

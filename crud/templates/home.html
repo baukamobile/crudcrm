@@ -9,16 +9,27 @@
         <th> start_time </th>
         <th> finish_time </th>
         <th> is_complete   </th>
+        <th>Delete</th>
+        <th>Update</th>
     </tr>
     <tr>
     {% for task in tasks %}
-
-    <td><a href="{% url 'task' task.id %}">{{ task.title }}</a></td>
+    <td>{{ task.title }}</a></td>
     <td>{{task.content}}</td>
     <td>{{task.start_time}}</td>
     <td>{{task.finish_time}}</td>
     <td>{{task.is_complete}}</td>
+    <td>
+        <form action="{% url 'delete_task' task.id %}">
+            {%csrf_token %}
+            <button>Delete</button></td>
+        </form>
+    </td>
+    <td>
+        <form action="{% url 'update_task' pk=task.id %}">
 
+            <button>Update</button></td>
+        </form>
 </tr>
 {% endfor %}
 </table>
