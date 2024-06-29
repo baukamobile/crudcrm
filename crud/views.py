@@ -1,10 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 from .models import *
 # Create your views here.
 
 
 def home(request):
-    pass
+    tasks = Task.objects.all()
+    return render(request, 'home.html', context={'task':tasks})
 
 def create_task(request):
     tasks = Task.objects.all()
