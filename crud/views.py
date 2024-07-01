@@ -32,3 +32,7 @@ def delete_task(request, pk):
     delete_tsk = Task.objects.get(id=pk)
     delete_tsk.delete()
     return redirect('home')
+
+
+def login(request):
+    return render(request, 'registration/login.html')
