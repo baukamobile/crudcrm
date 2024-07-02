@@ -43,7 +43,10 @@ def login_view(request):
             # form.save()
             # return redirect('/home')
             pass
-    return render(request, 'registration/login.html', context={'form':form})
+     
+
+
+    return render(request, 'registration/login_page.html', context={'form':form})
 
 
 def sign_up(request):
