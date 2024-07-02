@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <div class="col-md-14" >
 <table class="table table-dark table table-bordered table table-sm table table-hover">
     <tr class="table-active">
@@ -20,10 +21,12 @@
     <td>{{task.finish_time}}</td>
     <td>{{task.is_complete}}</td>
     <td>
+        {% if user.is_staff is False %}
         <form action="{% url 'delete_task' task.id %}">
             {%csrf_token %}
             <button>Delete</button></td>
         </form>
+        {% endif %}
     </td>
     <td>
         <form action="{% url 'update_task' pk=task.id %}">
@@ -34,4 +37,5 @@
 {% endfor %}
 </table>
 </div>
+
 {% endblock %}

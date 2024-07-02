@@ -2,7 +2,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.shortcuts import render, HttpResponse, redirect
 from .models import *
 from django.urls import reverse
-from .forms import CreateTaskForm, UpdateTaskForm, RegisterForm
+from .forms import CreateTaskForm, UpdateTaskForm, RegisterForm, LoginForm
 # Create your views here.
 
 
@@ -35,8 +35,15 @@ def delete_task(request, pk):
     return redirect('home')
 
 
-def login(request):
-    return render(request, 'registration/login.html')
+def login_view(request):
+    form = LoginForm()
+    if request.method == "POST":
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            # form.save()
+            # return redirect('/home')
+            pass
+    return render(request, 'registration/login.html', context={'form':form})
 
 
 def sign_up(request):
@@ -44,7 +51,7 @@ def sign_up(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)
+            login(request)
             return redirect('/home')
 
     else:
