@@ -2,7 +2,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.shortcuts import render, HttpResponse, redirect
 from .models import *
 from django.urls import reverse
-from .forms import CreateTaskForm, UpdateTaskForm, RegisterForm, LoginForm
+from .forms import CreateTaskForm, UpdateTaskForm, RegisterForm, LoginForm, Login_form, AuthenticationForm
 # Create your views here.
 
 
@@ -35,18 +35,15 @@ def delete_task(request, pk):
     return redirect('home')
 
 
-def login_view(request):
-    form = LoginForm()
-    if request.method == "POST":
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            # form.save()
-            # return redirect('/home')
-            pass
-     
-
-
-    return render(request, 'registration/login_page.html', context={'form':form})
+# def login_view(request):
+#     form = LoginForm()
+#     if request.method == "POST":
+#         form = LoginForm(request.POST)
+#         if form.is_valid():
+#             # form.save()
+#             # return redirect('/home')
+#             pass
+#     return render(request, 'registration/login_page.html', context={'form':form})
 
 
 def sign_up(request):
@@ -54,10 +51,27 @@ def sign_up(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request)
+            login(request, user)
             return redirect('/home')
 
     else:
         form = RegisterForm()
     
     return render(request, 'registration/sign_up.html', context={'form':form})
+
+
+def login_view(request):
+    form= Login_form()
+    if request.method=="POST":
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            return redirect('home')
+    else:
+        form = AuthenticationForm()
+    return render(request, 'registration/login_page.html', context={'form':form})
+
+
+
+# Qwerty  
+# qwerty123@gmail.com
+# laptop123#

@@ -22,6 +22,11 @@
     <td>{{task.is_complete}}</td>
     <td>
         {% if user.is_staff is False %}
+        <form action="#">
+            {%csrf_token %}
+            <button>Delete</button></td>
+        </form>
+        {% else %}
         <form action="{% url 'delete_task' task.id %}">
             {%csrf_token %}
             <button>Delete</button></td>

@@ -9,10 +9,11 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
-
+          {% if user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link" href="#">LogOut</a>
           </li>
+          {% endif %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'create_task' %}">Add Records</a>
           </li>
@@ -22,7 +23,7 @@
             <a class="nav-link" href="{% url 'sign-up' %}">Register</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'login-url' %}">LogIn</a>
+            <a class="nav-link" href="{% url 'log-in' %}">LogIn</a>
           </li>
 
           <li class="nav-item dropdown">

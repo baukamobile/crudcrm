@@ -5,8 +5,8 @@
 {% csrf_token %}
 {{ form|crispy }}
 
-<p>Have account? <a href="{% url 'login-url' %}">Log in</a> </p>
-<button type="submit" class="btn btn-success"> Register </button>
+<p>Have account? <a href="{% url 'sign-up' %}">Log in</a> </p>
+<button type="submit" class="btn btn-success"> Login </button>
 </form>
 
 {% endblock %}
