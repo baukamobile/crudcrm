@@ -83,8 +83,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'crudcrm',
-        'USER': 'nurbergen',
-        'PASSWORD': 'qwerty123',
+        'USER': 'your_user_name',
+        'PASSWORD': 'your_password',
     }
 }
 
