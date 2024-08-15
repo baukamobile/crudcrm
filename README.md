@@ -21,5 +21,4 @@ This repository contains a simple CRUD (Create, Read, Update, Delete) applicatio
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/your-repository.git
-   cd your-repository
+   git clone https://github.com/baukamobile/crudcrm.git
